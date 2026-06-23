@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "options-pricing-volatility-hedging"
+version = "1.0.0"
+description = "Validated European option pricing, implied volatility, surfaces, and dynamic delta hedging."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Amir Mahmoudinia"}]
+dependencies = [
+  "numpy>=2.0,<3",
+  "scipy>=1.13,<2",
+  "pandas>=2.2,<3",
+  "matplotlib>=3.9,<4",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<10",
+  "jupyter>=1.0,<2",
+  "nbclient>=0.10,<1",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

@@ -1,0 +1,16 @@
+component,value
+option_entry_cashflow,9.413403383853016
+stock_trading_cashflow,21.25214863828998
+option_settlement_cashflow,-28.851568343698915
+financing_cashflow,-2.3585408205853353
+transaction_cost_pnl,-0.29710757520687636
+terminal_pnl,-0.8416647173481948
+ledger_reconciliation_error,-6.483702463810914e-14
+model_hedging_pnl,-0.5399578851865101
+premium_edge_at_expiry,0.2576136334883756
+transaction_cost_drag_at_expiry,-0.3017068321617131
+counterfactual_reconstruction_error,0.0
+greek_taylor_residual,0.03226333694215232
+greek_reconciliation_error,-6.772360450213455e-14
+gamma_variance_pnl,-0.5440532687582864
+gamma_variance_residual,0.004095383571776301
