@@ -47,7 +47,7 @@ I kept the simulations moderate so that the full set of tables and figures can b
 .
 ├── data/processed/                  # Synthetic volatility-surface data
 ├── docs/                            # Model choices, checks, and working notes
-├── notebooks/                       # Eight executed notebooks
+├── notebooks/                       # Nine notebooks
 ├── outputs/
 │   ├── figures/                     # Generated plots
 │   └── tables/                      # Solver, surface, hedging, and P&L results
@@ -133,7 +133,7 @@ iv = implied_volatility_brent(
 6. `06_volatility_surface.ipynb` — smile, skew, term structure, and arbitrage checks
 7. `07_dynamic_delta_hedging.ipynb` — stock, cash, financing, settlement, and costs
 8. `08_pnl_attribution.ipynb` — ledger, counterfactual, Greek, and variance attribution
-
+9. `09_parameter_calibration_and_model_assumptions.ipynb` — fill-rate, markout, and model-assumption checks
 ## How I checked the calculations
 
 The automated checks cover:
