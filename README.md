@@ -1,5 +1,7 @@
 # Options Pricing, Volatility, and Delta Hedging in Python
 
+![tests](https://github.com/AMIRMAHMOUDINIA/options-pricing-volatility-hedging/actions/workflows/tests.yml/badge.svg)
+
 I began with a question that tends to disappear in textbook examples: once a pricing formula returns a value and a delta, what actually happens when the hedge is rebalanced through time?
 
 I worked through the problem from the bottom up. The code starts with payoffs, no-arbitrage bounds, and put–call parity, then moves to Black–Scholes pricing, Greeks, implied-volatility inversion, a simple volatility surface, and a self-financing delta hedge. The cash ledger became the central part of the project because it makes every stock trade, financing charge, option settlement, and transaction cost visible.
@@ -32,6 +34,12 @@ I kept the simulations moderate so that the full set of tables and figures can b
 ![Hedge frequency RMSE](outputs/figures/08_hedge_frequency_rmse.png)
 
 ![P&L versus realized volatility](outputs/figures/13_mean_pnl_vs_realized_volatility.png)
+
+## Additional research notes
+
+- [`docs/results_summary.md`](docs/results_summary.md) summarizes the main numerical findings and their interpretation.
+- [`docs/future_work.md`](docs/future_work.md) lists natural extensions, including empirical option-chain analysis.
+- [`notebooks/09_real_option_chain_iv_snapshot.ipynb`](notebooks/09_real_option_chain_iv_snapshot.ipynb) provides a reusable workflow for cleaning an option-chain snapshot and recovering implied volatilities from market mid-prices.
 
 ## Files
 
