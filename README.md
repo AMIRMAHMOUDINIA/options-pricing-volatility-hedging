@@ -41,6 +41,34 @@ I kept the simulations moderate so that the full set of tables and figures can b
 - [`docs/future_work.md`](docs/future_work.md) lists natural extensions, including empirical option-chain analysis.
 - [`notebooks/09_real_option_chain_iv_snapshot.ipynb`](notebooks/09_real_option_chain_iv_snapshot.ipynb) provides a reusable workflow for cleaning an option-chain snapshot and recovering implied volatilities from market mid-prices.
 
+<!-- EMPIRICAL_SVI_START -->
+## Empirical Deribit BTC SVI extension
+
+I extended the synthetic volatility-surface work to a frozen public Deribit BTC
+option-chain snapshot. The empirical workflow uses a common forward reference
+per expiry, retains one OTM contract per strike, and calibrates raw SVI in
+total-variance space.
+
+For the committed snapshot, **355 unique OTM observations across
+8 expiries** were calibrated. The largest per-expiry IV RMSE was
+**0.53 volatility percentage points**.
+
+All fitted slices passed the numerical butterfly diagnostic. All
+**7 adjacent-expiry calendar comparisons** also passed
+when evaluated only over moneyness regions jointly represented by the
+observed contracts.
+
+![Deribit BTC SVI smiles](outputs/figures/deribit_btc_svi_smiles.png)
+
+The implementation, quote-selection logic, and distinction between observed
+support and SVI wing extrapolation are documented in
+[`docs/empirical_deribit_svi.md`](docs/empirical_deribit_svi.md).
+
+Run `python scripts/run_deribit_svi_snapshot.py` to obtain a fresh snapshot.
+The committed raw CSV is the frozen reproducibility snapshot for the results
+reported above.
+<!-- EMPIRICAL_SVI_END -->
+
 ## Files
 
 ```text
@@ -71,6 +99,9 @@ I kept the simulations moderate so that the full set of tables and figures can b
 | `numerical_greeks.py` | Finite-difference checks for the analytical Greeks |
 | `implied_volatility.py` | Bisection, safeguarded Newton, and Brent inversion |
 | `volatility_surface.py` | Synthetic smiles, IV recovery, and static-arbitrage checks |
+| `svi.py` | Raw-SVI calibration, total variance, and butterfly diagnostics |
+| `deribit.py` | Public Deribit option-chain retrieval and normalization |
+| `empirical_surface.py` | OTM quote selection and observed-support calendar diagnostics |
 | `price_paths.py` | Geometric-Brownian-motion price paths |
 | `delta_hedging.py` | Self-financing hedge ledger and rebalancing logic |
 | `pnl_attribution.py` | Exact and approximate P&L attribution |

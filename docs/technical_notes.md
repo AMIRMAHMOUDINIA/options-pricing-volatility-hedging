@@ -43,5 +43,5 @@ A delta-neutral position can still carry gamma, vega, theta, jump, and liquidity
 - How do discrete dividends change parity, pricing, and hedging?
 - How large is the error from replacing bid/ask execution with a proportional-cost approximation?
 - How does a jump-diffusion or stochastic-volatility path change the residual attribution?
-- Can an SVI-type surface retain the same transparent arbitrage checks?
+- How stable are fitted SVI parameters across repeated market snapshots, and how sensitive are the wings to the available strike range?
 - How does hedging change when several options share the same underlying?
