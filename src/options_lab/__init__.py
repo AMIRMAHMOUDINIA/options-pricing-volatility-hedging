@@ -1,9 +1,15 @@
-"""Options Lab: pricing, implied volatility, surfaces, and delta hedging."""
+"""Options Lab: pricing, volatility surfaces, American exercise, and hedging."""
 
 from .arbitrage import (
     PriceBounds,
     european_option_bounds,
     put_call_parity_gap,
+)
+from .binomial import (
+    CRRResult,
+    EarlyExercisePoint,
+    crr_binomial_price,
+    crr_binomial_tree,
 )
 from .black_scholes import (
     black_scholes_d1_d2,
@@ -38,6 +44,8 @@ from .svi import (
 )
 
 __all__ = [
+    "CRRResult",
+    "EarlyExercisePoint",
     "Greeks",
     "ImpliedVolatilityResult",
     "MarketGreeks",
@@ -49,6 +57,8 @@ __all__ = [
     "black_scholes_greeks",
     "black_scholes_price",
     "call_payoff",
+    "crr_binomial_price",
+    "crr_binomial_tree",
     "european_option_bounds",
     "fit_svi_smile",
     "fit_svi_surface",

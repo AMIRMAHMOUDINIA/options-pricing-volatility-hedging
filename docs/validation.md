@@ -4,11 +4,12 @@ I did not want the Black–Scholes implementation to be checked only against val
 
 ## Automated checks
 
-The suite contains 41 tests in four groups:
+The automated suite covers:
 
 - payoffs, bounds, and parity;
 - Black–Scholes pricing and Greeks;
 - implied-volatility inversion and surface diagnostics;
+- CRR convergence and American early exercise;
 - dynamic hedging and P&L attribution.
 
 ## Independent references and identities
@@ -19,6 +20,7 @@ The suite contains 41 tests in four groups:
 | Greeks | Central finite differences and call/put identities |
 | Implied volatility | Recovery of known generating volatility with three solvers |
 | Surface | Recovery of generating IV; strike and calendar consistency checks |
+| CRR tree | One-step replication, convergence to Black-Scholes, American/European ordering, and early-exercise benchmarks |
 | Path simulation | Positivity, array shape, and fixed-seed reproducibility |
 | Hedge ledger | Closed-form one-period example and exact cash reconciliation |
 | Position signs | Long/short symmetry without transaction costs |

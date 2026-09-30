@@ -95,6 +95,7 @@ reported above.
 | `payoffs.py` | Call and put payoffs, plus long/short profit |
 | `arbitrage.py` | Discounting, price bounds, and put–call parity |
 | `black_scholes.py` | Vectorized European option pricing |
+| `binomial.py` | CRR European/American pricing, continuous dividends, and early-exercise boundaries |
 | `greeks.py` | Analytical delta, gamma, vega, theta, and rho |
 | `numerical_greeks.py` | Finite-difference checks for the analytical Greeks |
 | `implied_volatility.py` | Bisection, safeguarded Newton, and Brent inversion |
@@ -190,11 +191,33 @@ Run them with:
 pytest
 ```
 
+<!-- AMERICAN_CRR_START -->
+## CRR and American early exercise
+
+I added a Cox-Ross-Rubinstein tree as a second pricing framework rather than forcing early exercise into the Black-Scholes code.
+
+At 800 steps, the European CRR call and put were each within about **0.0025** of the corresponding Black-Scholes benchmark in the saved convergence experiment.
+
+The early-exercise experiments separate three cases:
+
+- the non-dividend American call had a premium of **0.000000** over its European CRR value;
+- the deep-ITM American put had a premium of **2.0986**;
+- the dividend-paying American call had a premium of **3.8205**.
+
+The implementation also records discrete early-exercise boundaries so the American premium can be connected to the nodes at which intrinsic value overtakes continuation value.
+
+![CRR convergence](outputs/figures/crr_convergence.png)
+
+![American exercise boundaries](outputs/figures/american_exercise_boundaries.png)
+
+See [`docs/american_crr.md`](docs/american_crr.md) for the equations, validation logic, and interpretation.
+<!-- AMERICAN_CRR_END -->
+
 ## Where the model stops
 
-The baseline assumes European exercise, no dividends, geometric Brownian motion, constant volatility and interest rates, continuous market availability, symmetric borrowing and lending rates, and proportional stock-trading costs.
+The Black-Scholes and dynamic-hedging baseline remains European and non-dividend-paying. A separate CRR module now supports European and American exercise with a continuous dividend yield. The hedge simulations still use the original European Black-Scholes setting.
 
-I did not include jumps, stochastic volatility, discrete dividends, early exercise, market impact, margin constraints, or cross-hedging across several options. Those omissions matter, especially when interpreting the hedging results beyond the controlled experiments shown here.
+I did not include jumps, stochastic volatility, discrete cash dividends, market impact, margin constraints, or cross-hedging across several options. American exercise is handled only in the CRR pricing module and is not yet integrated into the dynamic hedge simulator.
 
 More detail is available in [`docs/methodology.md`](docs/methodology.md), [`docs/validation.md`](docs/validation.md), and [`docs/technical_notes.md`](docs/technical_notes.md).
 

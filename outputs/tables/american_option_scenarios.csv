@@ -1,0 +1,4 @@
+scenario,spot,strike,rate,time_to_expiry,volatility,option_type,dividend_yield,steps,european_price,american_price,early_exercise_premium,boundary_points
+non_dividend_call,100.0,100.0,0.05,1.0,0.2,call,0.0,800,10.448084314882543,10.448084314882543,0.0,0
+deep_itm_put,80.0,100.0,0.05,1.0,0.25,put,0.0,800,18.265436036276267,20.364078231341463,2.098642195065196,793
+dividend_call,120.0,100.0,0.02,1.0,0.2,call,0.08,800,16.192435320038648,20.012969537688175,3.820534217649527,799

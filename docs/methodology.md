@@ -161,3 +161,11 @@ d\Pi\approx\tfrac12sN\Gamma_tS_t^2(\sigma_{real}^2-\sigma_{imp}^2)dt.
 \]
 
 The last two are approximations. Their residuals contain discrete rebalancing, higher-order terms, and path effects.
+
+
+<!-- CRR_METHODOLOGY -->
+## 10. CRR binomial pricing and American exercise
+
+The CRR tree uses `u = exp(sigma sqrt(dt))`, `d = 1/u`, and `p = [exp((r-q)dt)-d]/(u-d)`, where `q` is a continuous dividend yield. European values are discounted risk-neutral expectations. For American options, every pre-expiry node compares continuation value with intrinsic value and retains the larger amount.
+
+For a put, the recorded early-exercise boundary is the highest spot at an exercise-optimal node at that time step. For a call it is the lowest such spot. The boundary is therefore a discrete tree approximation rather than a continuous free-boundary solution.
