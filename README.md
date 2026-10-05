@@ -39,7 +39,7 @@ I kept the simulations moderate so that the full set of tables and figures can b
 
 - [`docs/results_summary.md`](docs/results_summary.md) summarizes the main numerical findings and their interpretation.
 - [`docs/future_work.md`](docs/future_work.md) lists natural extensions, including empirical option-chain analysis.
-- [`notebooks/09_real_option_chain_iv_snapshot.ipynb`](notebooks/09_real_option_chain_iv_snapshot.ipynb) provides a reusable workflow for cleaning an option-chain snapshot and recovering implied volatilities from market mid-prices.
+- [`docs/empirical_deribit_svi.md`](docs/empirical_deribit_svi.md) documents the frozen Deribit BTC option-chain snapshot, OTM filtering, raw SVI calibration, fit diagnostics, and observed-support arbitrage checks.
 
 <!-- EMPIRICAL_SVI_START -->
 ## Empirical Deribit BTC SVI extension
@@ -169,7 +169,7 @@ iv = implied_volatility_brent(
 6. `06_volatility_surface.ipynb` — smile, skew, term structure, and arbitrage checks
 7. `07_dynamic_delta_hedging.ipynb` — stock, cash, financing, settlement, and costs
 8. `08_pnl_attribution.ipynb` — ledger, counterfactual, Greek, and variance attribution
-9. `09_real_option_chain_iv_snapshot.ipynb` — real option-chain cleaning and implied-volatility recovery workflow
+9. `docs/empirical_deribit_svi.md` — empirical Deribit BTC volatility-surface calibration and validation record
 ## How I checked the calculations
 
 The automated checks cover:
