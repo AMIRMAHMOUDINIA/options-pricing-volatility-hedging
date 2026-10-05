@@ -169,3 +169,13 @@ The last two are approximations. Their residuals contain discrete rebalancing, h
 The CRR tree uses `u = exp(sigma sqrt(dt))`, `d = 1/u`, and `p = [exp((r-q)dt)-d]/(u-d)`, where `q` is a continuous dividend yield. European values are discounted risk-neutral expectations. For American options, every pre-expiry node compares continuation value with intrinsic value and retains the larger amount.
 
 For a put, the recorded early-exercise boundary is the highest spot at an exercise-optimal node at that time step. For a call it is the lowest such spot. The boundary is therefore a discrete tree approximation rather than a continuous free-boundary solution.
+
+
+<!-- HIGHER_ORDER_GREEKS_METHODOLOGY -->
+## 11. Higher-order volatility Greeks
+
+The analytical risk layer includes vanna, `d²V/(dS dσ)`, and volga/vomma, `d²V/dσ²`. For the non-dividend Black-Scholes model, `Vanna = -phi(d1)d2/sigma` and `Volga = Vega d1 d2/sigma`.
+
+I validate both formulas independently from option prices. Vanna uses a mixed central finite difference in spot and volatility; volga uses a second central finite difference in volatility. This avoids using one analytical Greek formula to validate another.
+
+Raw derivatives use decimal volatility. The displayed market conversion multiplies vanna by `0.01` and volga by `0.01²` for one-volatility-point units.

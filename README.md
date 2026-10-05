@@ -97,6 +97,8 @@ reported above.
 | `black_scholes.py` | Vectorized European option pricing |
 | `binomial.py` | CRR European/American pricing, continuous dividends, and early-exercise boundaries |
 | `greeks.py` | Analytical delta, gamma, vega, theta, and rho |
+| `higher_order_greeks.py` | Analytical vanna and volga/vomma with market-unit conversions |
+| `numerical_higher_order_greeks.py` | Mixed and second finite-difference checks for vanna and volga |
 | `numerical_greeks.py` | Finite-difference checks for the analytical Greeks |
 | `implied_volatility.py` | Bisection, safeguarded Newton, and Brent inversion |
 | `volatility_surface.py` | Synthetic smiles, IV recovery, and static-arbitrage checks |
@@ -212,6 +214,25 @@ The implementation also records discrete early-exercise boundaries so the Americ
 
 See [`docs/american_crr.md`](docs/american_crr.md) for the equations, validation logic, and interpretation.
 <!-- AMERICAN_CRR_END -->
+
+<!-- HIGHER_ORDER_GREEKS_START -->
+## Higher-order volatility Greeks
+
+The Black-Scholes risk layer now includes analytical **vanna** and **volga/vomma**, with an independent finite-difference implementation that differentiates option prices directly.
+
+On the saved strike grid, analytical and numerical values agree closely:
+
+- maximum absolute vanna error: **1.07e-07**;
+- maximum absolute volga error: **8.76e-06**.
+
+The validation also confirms the Black-Scholes call/put identity for these sensitivities and explicitly converts decimal-volatility derivatives to one-volatility-point market units.
+
+![Vanna validation](outputs/figures/vanna_validation.png)
+
+![Volga validation](outputs/figures/volga_validation.png)
+
+See [`docs/higher_order_greeks.md`](docs/higher_order_greeks.md) for the formulas, finite-difference construction, units, and interpretation.
+<!-- HIGHER_ORDER_GREEKS_END -->
 
 ## Where the model stops
 

@@ -10,6 +10,7 @@ The automated suite covers:
 - Black–Scholes pricing and Greeks;
 - implied-volatility inversion and surface diagnostics;
 - CRR convergence and American early exercise;
+- higher-order vanna and volga against direct price finite differences;
 - dynamic hedging and P&L attribution.
 
 ## Independent references and identities
@@ -21,6 +22,7 @@ The automated suite covers:
 | Implied volatility | Recovery of known generating volatility with three solvers |
 | Surface | Recovery of generating IV; strike and calendar consistency checks |
 | CRR tree | One-step replication, convergence to Black-Scholes, American/European ordering, and early-exercise benchmarks |
+| Higher-order Greeks | Vanna mixed price derivative; volga second price derivative; call/put identity and market-unit scaling |
 | Path simulation | Positivity, array shape, and fixed-seed reproducibility |
 | Hedge ledger | Closed-form one-period example and exact cash reconciliation |
 | Position signs | Long/short symmetry without transaction costs |
